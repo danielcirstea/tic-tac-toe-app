@@ -1,0 +1,27 @@
+{
+  "name": "tic-tac-toe-app",
+  "version": "1.0.0",
+  "description": "Main application frontend repository for tic-tac-toe game",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielcirstea/tic-tac-toe-app.git"
+  },
+  "keywords": [],
+  "author": "Daniel Cirstea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielcirstea/tic-tac-toe-app/issues"
+  },
+  "homepage": "https://github.com/danielcirstea/tic-tac-toe-app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "helmet": "^4.1.1"
+  }
+}
