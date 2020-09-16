@@ -1,6 +1,5 @@
 function startGame() {
     var cells = document.getElementsByTagName('td');
-
     var movesMap = {
         1: '',
         2: '',
