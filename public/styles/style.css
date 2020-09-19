@@ -18,6 +18,10 @@ td {
     font-size: 40px;
 }
 
+td:hover{
+    cursor: pointer;
+}
+
 table {
     margin: 5px auto;
 }
@@ -29,4 +33,10 @@ table {
 .horizontal {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
 }
