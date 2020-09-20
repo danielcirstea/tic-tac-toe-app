@@ -53,10 +53,21 @@ async function postRequest(url, data) {
         body: JSON.stringify(data),
     });
 }
+async function handleData(payload, url) {
+    await postRequest(url + '/moves', payload);
+    var history = await postRequest(url + '/history', { id: payload.id });
+    var result = await history.json();
+
+    return appendData(result.history);
+}
 
 
-async function startGame() {
+window.onload = async function() {
     setSessionId();
+    setTimeout(() => {
+        alert('Session timed out.')
+        window.location.reload();
+    }, 1800000); //30 min
 
     var _id = getSessionId();
     var config = await getConfig();
@@ -76,7 +87,7 @@ async function startGame() {
     };
     var turn = 1;
 
-    async function handleData(field, i) {
+    async function fillCells(field, i) {
         var player, move;
 
         if (field.innerHTML === '' && turn % 2 === 1) {
@@ -95,16 +106,11 @@ async function startGame() {
 
         if (player) {
             var currentDate = new window.Date();
-
             var payload = {
                 id: _id,
                 action: `Player ${player} has checked ${move} on cell ${i} at ${currentDate.toLocaleString()}.`,
             }
-
-            await postRequest(apiUrl + '/moves', payload);
-            var history = await postRequest(apiUrl + '/history', { id: _id });
-            var result = await history.json();
-            appendData(result.history);
+            await handleData(payload, apiUrl);
         }
     }
 
@@ -163,11 +169,11 @@ async function startGame() {
             var index = i;
 
             cell.addEventListener('click', function () {
-                handleData(cell, index + 1);
+                fillCells(cell, index + 1);
                 getResult();
             });
         })();
     }
 }
 
-startGame();
+exports.postRequest = postRequest;
