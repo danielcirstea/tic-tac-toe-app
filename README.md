@@ -7,7 +7,7 @@ Firstly you should define your own configuration, by using this template and add
 -------------------------------
 
 ##### PORT = some port 
-##### API_URL  = some mongo db uri
+##### API_URL  = api url (tic-tac-toe-service)
 
 -------------------------------
 By default, the configuration is the following: 
